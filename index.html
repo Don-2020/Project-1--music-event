@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="css\style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -22,11 +22,17 @@
 </header>
 
 <body>
+    <form>
+        <input type="text" placeholder="Search.." name="search">
+        <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+
     <p id="location">location there</p>
     <div id="map"></div>
     <div id="events"></div>
-    <script src="script.js"></script>
+    <!--  -->
     <script src="https://maps.googleapis.com/maps/api/js" async defer></script>
+
 
 
     <div class="container">
@@ -47,6 +53,8 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript" src="javascript\logic.js"></script>
+
 </body>
 
 </html>
