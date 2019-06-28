@@ -13,25 +13,27 @@
 </head>
 
 <body>
-
     <header>
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
                 <h1 class="display-4">SDS Events Presents..</h1>
+
                 <p class="lead">The official site for searching music events in the Los Angeles area.</p>
+
             </div>
         </div>
     </header>
-
-    <div class="container" id="boxOne">
-        <form>
-            <h6>Find an event near you:</h6>
-            <input type="text" placeholder="Search by City" name="search">
-            <button type="submit"><i class="fa fa-search"></i>Submit</button>
-        </form>
+  
+ <div class="container" id="boxOne">
+    <div id="floating-panel">
+        <input id="address" type="textbox" value="Sydney, NSW">
+        <input id="submit" type="button" value="Geocode">
+    </div>
+    <div id="map"></div>
+    <div id="events"></div>
     </div>
 
-    <div class="container" id="boxTwo">
+  <div class="container" id="boxTwo">
         <p id="location">location there</p>
         <div id="map"></div>
         <div id="events"></div>
@@ -51,13 +53,17 @@
                 Location and Timing:
             </div>
 
+
             <div class="col" id="event-display">
                 Event Info:
+
             </div>
         </div>
     </div>
 
     <script type="text/javascript" src="javascript\logic.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkg4cpErwFNoj7zFcjPKLHpLmQLib3jcc&callback=initMap"
+        async defer></script>
 
 </body>
 
