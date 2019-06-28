@@ -12,28 +12,24 @@
     <title>SDS Events Presents..</title>
 </head>
 
-<header>
-    <div class="jumbotron jumbotron-fluid">
-        <div class="container">
-            <h1 class="display-4">SDS Events Presents..</h1>
-            <p class="lead">The offcial site for searching music events in the Los Angeles area.</p>
-        </div>
-    </div>
-</header>
-
 <body>
-    <form>
-        <input type="text" placeholder="Search.." name="search">
-        <button type="submit"><i class="fa fa-search"></i></button>
-    </form>
+    <header>
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-4">SDS Events Presents..</h1>
+                <p class="lead">The offcial site for searching music events in the Los Angeles area.</p>
+            </div>
+        </div>
+    </header>
 
-    <p id="location">location there</p>
+
+    <div id="floating-panel">
+        <input id="address" type="textbox" value="Sydney, NSW">
+        <input id="submit" type="button" value="Geocode">
+    </div>
+    <!-- <p id="location">location there</p> -->
     <div id="map"></div>
     <div id="events"></div>
-    <!--  -->
-    <script src="https://maps.googleapis.com/maps/api/js" async defer></script>
-
-
 
     <div class="container">
         <div class="row">
@@ -45,7 +41,7 @@
             <div class="col" id="location-display">
                 Location and Timing:
             </div>
-<!-- a new row underneathe for the weather -->
+            <!-- a new row underneathe for the weather -->
         </div>
         <div class="row">
             <div class="col" id="weather-display">
@@ -53,7 +49,10 @@
             </div>
         </div>
     </div>
+
     <script type="text/javascript" src="javascript\logic.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkg4cpErwFNoj7zFcjPKLHpLmQLib3jcc&callback=initMap"
+        async defer></script>
 
 </body>
 
