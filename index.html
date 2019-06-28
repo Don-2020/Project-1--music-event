@@ -12,47 +12,51 @@
     <title>SDS Events Presents..</title>
 </head>
 
-<header>
-    <div class="jumbotron jumbotron-fluid">
-        <div class="container">
-            <h1 class="display-4">SDS Events Presents..</h1>
-            <p class="lead">The offcial site for searching music events in the Los Angeles area.</p>
-        </div>
-    </div>
-</header>
-
 <body>
-    <form>
-        <input type="text" placeholder="Search.." name="search">
-        <button type="submit"><i class="fa fa-search"></i></button>
-    </form>
 
-    <p id="location">location there</p>
-    <div id="map"></div>
-    <div id="events"></div>
-    <!--  -->
-    <script src="https://maps.googleapis.com/maps/api/js" async defer></script>
+    <header>
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-4">SDS Events Presents..</h1>
+                <p class="lead">The official site for searching music events in the Los Angeles area.</p>
+            </div>
+        </div>
+    </header>
 
+    <div class="container" id="boxOne">
+        <form>
+            <h6>Find an event near you:</h6>
+            <input type="text" placeholder="Search by City" name="search">
+            <button type="submit"><i class="fa fa-search"></i>Submit</button>
+        </form>
+    </div>
 
+    <div class="container" id="boxTwo">
+        <p id="location">location there</p>
+        <div id="map"></div>
+        <div id="events"></div>
+        <!--  -->
+        <script src="https://maps.googleapis.com/maps/api/js" async defer></script>
 
-    <div class="container">
-        <div class="row">
-
+        <div class="row" id="ticketMasterInfo">
             <div class="col" id="artist-display">
-                Artist Info:
+                Artist Bio:
+            </div>
+
+            <div class="col" id="date">
+                Date:
             </div>
 
             <div class="col" id="location-display">
                 Location and Timing:
             </div>
-<!-- a new row underneathe for the weather -->
-        </div>
-        <div class="row">
-            <div class="col" id="weather-display">
-                Let's do the weather here.
+
+            <div class="col" id="event-display">
+                Event Info:
             </div>
         </div>
     </div>
+
     <script type="text/javascript" src="javascript\logic.js"></script>
 
 </body>
