@@ -17,35 +17,46 @@
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
                 <h1 class="display-4">SDS Events Presents..</h1>
-                <p class="lead">The offcial site for searching music events in the Los Angeles area.</p>
+
+                <p class="lead">The official site for searching music events in the Los Angeles area.</p>
+
             </div>
         </div>
     </header>
-
-
+  
+ <div class="container" id="boxOne">
     <div id="floating-panel">
         <input id="address" type="textbox" value="Sydney, NSW">
         <input id="submit" type="button" value="Geocode">
     </div>
-    <!-- <p id="location">location there</p> -->
     <div id="map"></div>
     <div id="events"></div>
+    </div>
 
-    <div class="container">
-        <div class="row">
+  <div class="container" id="boxTwo">
+        <p id="location">location there</p>
+        <div id="map"></div>
+        <div id="events"></div>
+        <!--  -->
+        <script src="https://maps.googleapis.com/maps/api/js" async defer></script>
 
+        <div class="row" id="ticketMasterInfo">
             <div class="col" id="artist-display">
-                Artist Info:
+                Artist Bio:
+            </div>
+
+            <div class="col" id="date">
+                Date:
             </div>
 
             <div class="col" id="location-display">
                 Location and Timing:
             </div>
-            <!-- a new row underneathe for the weather -->
-        </div>
-        <div class="row">
-            <div class="col" id="weather-display">
-                Let's do the weather here.
+
+
+            <div class="col" id="event-display">
+                Event Info:
+
             </div>
         </div>
     </div>
