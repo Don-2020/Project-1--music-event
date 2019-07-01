@@ -135,11 +135,11 @@ function showEvents(json) {
     for (var i = 0; i < json.page.size; i++) {
         let template;
         var imageUrl = json._embedded.events[i].images[2].url;
-        var artist_bio = ""
-        var event_display = ""
-        var location_display = "";
-        var date = ""
-        console.log(image)
+        var artist_bio = json._embedded.events[i].name;
+        var event_display = "";
+        var location_display = json._embedded.events[i]._embedded.venues.address;
+        var date = json._embedded.events[i].dates.start.dateTime;
+        
         template = `<div class="card horizontal">
                         <div class="card-image">
                             <img src="${imageUrl}" class="responsive-img" alt="">
@@ -171,8 +171,8 @@ function showEvents(json) {
 
                    $(".event-card").append(element);
 
-        var image = $('<img>').attr("src", imageUrl)
-        $("#events").append(image, "<p>" + json._embedded.events[i].name + "</p>");
+        // var image = $('<img>').attr("src", imageUrl)
+        // $("#events").append(image, "<p>" + json._embedded.events[i].name + "</p>");
 
 
 
@@ -194,6 +194,8 @@ function addMarker(map, event) {
 }
 
 
+function checkEvent(json){
 
+}
 
 // getLocation();
