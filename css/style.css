@@ -1,4 +1,11 @@
 #map {
-    width: 500px;
+    width: 780px;
     height: 400px;
   }
+  
+  .card-image{
+    width: 300px;
+    height:225;
+  }
+
+  
