@@ -16,9 +16,13 @@ body {
   .card-image{
     width: 300px;
     height:225;
-  /* }
-  .nav-wrapper {
-    text-align: center;
-  } */
-  
+
+  }
+
+#artist-display{
+  font-size: 21px;
+  font-weight: bold;
+  color: black
+}
+
 
