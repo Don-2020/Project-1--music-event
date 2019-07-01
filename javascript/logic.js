@@ -23,10 +23,6 @@
 //     }
 // }
 
-
-
-
-
 var geocoder;
 var map;
 
@@ -48,13 +44,13 @@ function geocodeAddress(geocoder, resultsMap) {
     geocoder.geocode({ 'address': address }, function (results, status) {
 
         if (status === 'OK') {
-            console.log(results[0])
+            // console.log(results[0])
             resultsMap.setCenter(results[0].geometry.location);
             var marker = new google.maps.Marker({
                 map: resultsMap,
                 position: results[0].geometry.location
             });
-            console.log(results[0].geometry.location.lat());
+            // console.log(results[0].geometry.location.lat());
 
             showPosition(results[0].geometry.location);
         } else {
@@ -72,52 +68,16 @@ function showPosition(position) {
 
     $.ajax({
         type: "GET",
-        url: "https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&apikey=ihFJccSowVqXXUsbu3CQf4vL56tgEJMA&latlong=" + latlon,
+        url: "https://app.ticketmaster.com/discovery/v2/events.json?page=3&startDateTime=2019-07-01T14:00:00Z&endDateTime=2019-08-01T14:00:00Z&classificationName=music&size=10&apikey=ihFJccSowVqXXUsbu3CQf4vL56tgEJMA&latlong=34.0522342,-118.2436849",
+        // url: "https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&apikey=ihFJccSowVqXXUsbu3CQf4vL56tgEJMA&latlong=" + latlon,
         async: true,
         dataType: "json",
         success: function (json) {
-            console.log(json);
-            var e = document.getElementById("events");
-            e.innerHTML = json.page.totalElements + " events found.";
+            console.log("response: ", json);
+            // var e = document.getElementById("events");
+            // e.innerHTML = json.page.totalElements + " events found.";
             showEvents(json);
             // initMap(position, json);
-            //     var imgurl = 'http://lorempixel.com/100/190/nature/6';
-            //     var artist_bio = ""
-            //     var event_display = ""
-            //     var location_display = "";
-            //     var date = ""
-            //     var template =  `<div class="card horizontal">
-            //     <div class="card-image">
-            //         <img src="${imgurl}" class="responsive-img" alt="">
-            //     </div>
-
-            //     <div class="card-stacked">
-            //         <div class="card-content">
-            //             <div class="row">
-            //                 <div class="col" id="artist-display">
-            //                     Artist Bio: ${artist_bio}
-            //                 </div>
-            //                 <div class="col" id="event-display">
-            //                     Event Info:  ${event_display}
-            //                 </div>
-            //             </div>
-            //             <div class="row">
-            //                 <div class="col" id="location-display">
-            //                     Location: ${location_display}
-            //                 </div>
-            //                 <div class="col" id="date">
-            //                     Date and Time: ${date}
-            //                 </div>
-            //             </div>
-            //         </div>
-            //     </div>
-            // </div>`
-
-            // var element  = $(template);
-
-            // $(".event-card").append(element);
-
-
         },
         error: function (xhr, status, err) {
             console.log(err);
@@ -128,13 +88,14 @@ function showPosition(position) {
 
 
 
-
-
-
 function showEvents(json) {
     for (var i = 0; i < json.page.size; i++) {
-        let template;
         var imageUrl = json._embedded.events[i].images[2].url;
+
+        console.log(image)
+        var image = $('<img>').attr("src", imageUrl)
+        $("#events").append(image, "<p>" + json._embedded.events[i].name + "</p>");
+
         var artist_bio = json._embedded.events[i].name;
         var event_display = "";
         var location_display = json._embedded.events[i]._embedded.venues.address;
@@ -179,18 +140,19 @@ function showEvents(json) {
 
 
 
+
         addMarker(map, json._embedded.events[i]);
     }
 }
 
 function addMarker(map, event) {
-    console.log(event);
+    // console.log(event);
     var marker = new google.maps.Marker({
         position: new google.maps.LatLng(event._embedded.venues[0].location.latitude, event._embedded.venues[0].location.longitude),
         map: map
     });
     marker.setIcon('http://maps.google.com/mapfiles/ms/icons/red-dot.png');
-    // console.log(marker);
+    //     console.log(marker);
 }
 
 
