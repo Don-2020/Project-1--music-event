@@ -92,10 +92,6 @@ function showEvents(json) {
     for (var i = 0; i < json.page.size; i++) {
         var imageUrl = json._embedded.events[i].images[2].url;
 
-        console.log(image)
-        var image = $('<img>').attr("src", imageUrl)
-        $("#events").append(image, "<p>" + json._embedded.events[i].name + "</p>");
-
         var artist_bio = json._embedded.events[i].name;
         var event_display = "";
         var location_display = json._embedded.events[i]._embedded.venues.address;
