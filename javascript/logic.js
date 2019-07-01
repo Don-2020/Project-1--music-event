@@ -138,7 +138,9 @@ function showEvents(json) {
         var artist_bio = json._embedded.events[i].name;
         var event_display = "";
         var location_display = json._embedded.events[i]._embedded.venues.address;
+        
         var date = json._embedded.events[i].dates.start.dateTime;
+        var date_time
         
         template = `<div class="card horizontal">
                         <div class="card-image">
@@ -160,10 +162,15 @@ function showEvents(json) {
                                         Location: ${location_display}
                                     </div>
                                     <div class="col" id="date">
-                                        Date and Time: ${date}
+                                        Date: ${date}
                                     </div>
                                 </div>
                             </div>
+                            <div class="row">
+                                    <div class="col" id="date_time">
+                                         Time: ${date_time}
+                                    </div>
+                                </div>
                         </div>
                     </div>`
                    var element  = $(template) ;
