@@ -68,7 +68,8 @@ function showPosition(position) {
 
     $.ajax({
         type: "GET",
-        url: "https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&apikey=ihFJccSowVqXXUsbu3CQf4vL56tgEJMA&latlong=" + latlon,
+        url: "https://app.ticketmaster.com/discovery/v2/events.json?page=3&startDateTime=2019-07-01T14:00:00Z&endDateTime=2019-08-01T14:00:00Z&classificationName=music&size=10&apikey=ihFJccSowVqXXUsbu3CQf4vL56tgEJMA&latlong=34.0522342,-118.2436849",
+        // url: "https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&apikey=ihFJccSowVqXXUsbu3CQf4vL56tgEJMA&latlong=" + latlon,
         async: true,
         dataType: "json",
         success: function (json) {
