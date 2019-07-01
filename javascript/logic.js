@@ -44,13 +44,13 @@ function geocodeAddress(geocoder, resultsMap) {
     geocoder.geocode({ 'address': address }, function (results, status) {
 
         if (status === 'OK') {
-            console.log(results[0])
+            // console.log(results[0])
             resultsMap.setCenter(results[0].geometry.location);
             var marker = new google.maps.Marker({
                 map: resultsMap,
                 position: results[0].geometry.location
             });
-            console.log(results[0].geometry.location.lat());
+            // console.log(results[0].geometry.location.lat());
 
             showPosition(results[0].geometry.location);
         } else {
@@ -72,9 +72,9 @@ function showPosition(position) {
         async: true,
         dataType: "json",
         success: function (json) {
-            console.log(json);
-            var e = document.getElementById("events");
-            e.innerHTML = json.page.totalElements + " events found.";
+            console.log("response: ", json);
+            // var e = document.getElementById("events");
+            // e.innerHTML = json.page.totalElements + " events found.";
             showEvents(json);
             // initMap(position, json);
         },
@@ -89,19 +89,22 @@ function showPosition(position) {
 
 function showEvents(json) {
     for (var i = 0; i < json.page.size; i++) {
-        $("#events").append("<p>" + json._embedded.events[i].name + "</p>");
+        var imageUrl = json._embedded.events[i].images[2].url;
+        console.log(image)
+        var image = $('<img>').attr("src", imageUrl)
+        $("#events").append(image, "<p>" + json._embedded.events[i].name + "</p>");
         addMarker(map, json._embedded.events[i]);
     }
 }
 
 function addMarker(map, event) {
-    console.log(event);
+    // console.log(event);
     var marker = new google.maps.Marker({
         position: new google.maps.LatLng(event._embedded.venues[0].location.latitude, event._embedded.venues[0].location.longitude),
         map: map
     });
     marker.setIcon('http://maps.google.com/mapfiles/ms/icons/red-dot.png');
-    console.log(marker);
+    //     console.log(marker);
 }
 
 
