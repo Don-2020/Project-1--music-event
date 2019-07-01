@@ -2,3 +2,14 @@
     width: 500px;
     height: 400px;
   }
+.nav-extended {
+  background-image: url("../images/concert-crowd4.jpeg");
+  background-position: center;
+  background-size: cover;
+  color: black;
+}
+
+body {
+  background-image: url("../images/heart-headphones.jpg");
+  /* background-size: cover; */
+}
