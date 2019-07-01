@@ -7,7 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="css\style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
 
@@ -17,62 +16,39 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>SDS Events Presents..</title>
 </head>
 
 <body>
     <header>
-        <div class="jumbotron jumbotron-fluid">
-            <div class="container">
-                <h1 class="display-4">SDS Events Presents..</h1>
-
-                <p class="lead">The official site for searching music events in the Los Angeles area.</p>
-
+        <nav class="nav-extended">
+            <div class="nav-wrapper"></div>
+            <h1>SDS Events Presents...</h1>
+            <h5>The official site for searching music events in the Los Angeles area.</h5>
             </div>
-        </div>
+        </nav>
     </header>
 
-    <div class="container" id="boxOne">
-        <div id="floating-panel">
-            <input id="address" type="textbox" value="Sydney, NSW">
-            <input id="submit" type="button" value="Geocode">
-        </div>
-        <div id="map"></div>
-        <div id="events"></div>
+    <div class="container">
+        <form>
+            <div class="input-field" id="floating-panel">
+                <input id="address" type="text">
+                <label class="active" for="address"></label>
+                <input id="submit" type="button" value="Geocode">
+            </div>
+        </form>
     </div>
 
-
-    <div class="container" id="boxTwo">
-        <p id="location">location there</p>
-        <div id="map"></div>
-        <div id="events"></div>
-
-        <!--  -->
-        <script src="https://maps.googleapis.com/maps/api/js" async defer></script>
-
-        <div class="row" id="ticketMasterInfo">
-            <div class="col" id="artist-display">
-                Artist Bio:
-            </div>
-
-            <div class="col" id="date">
-                Date:
-            </div>
-
-            <div class="col" id="location-display">
-                Location and Timing:
-            </div>
-
-
-            <div class="col" id="event-display">
-                Event Info:
-
-            </div>
+    <main>
+        <div class="container" id="boxOne">
+            <div id="map"></div>
+            <div class="event-card"></div>
+            <div id="events"></div>
         </div>
-    </div>
+    </main>
 
+
+   
 
     <script type="text/javascript" src="javascript\logic.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkg4cpErwFNoj7zFcjPKLHpLmQLib3jcc&callback=initMap"
