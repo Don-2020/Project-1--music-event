@@ -92,41 +92,41 @@ function showEvents(json) {
     for (var i = 0; i < json.page.size; i++) {
         var imageUrl = json._embedded.events[i].images[2].url;
 
-        var artist_bio = json._embedded.events[i].name;
+            var artist_bio = json._embedded.events[i].name;
         var event_display = "";
-        var location_display = json._embedded.events[i]._embedded.venues.address;
-        
-        var date = json._embedded.events[i].dates.start.dateTime;
-        var date_time
-        
+        var location_display = json._embedded.events[i]._embedded.venues[0].name;
+     
+        var date = json._embedded.events[i].dates.start.localDate;
+      var date_time
+    var format = "MM/DD/YYYY"
+    var formattedDate = moment(date).format("MM/DD/YY");
+    // console.log(">>>>DATE " + formattedDate)
+            
         template = `<div class="card horizontal">
-                        <div class="card-image">
-                            <img src="${imageUrl}" class="responsive-img" alt="">
+                    <div class="card-image">
+                        <img src="${imageUrl}" class="responsive-img" alt="">
                         </div>
 
                         <div class="card-stacked">
                             <div class="card-content">
                                 <div class="row">
                                     <div class="col" id="artist-display">
-                                        Artist Bio: ${artist_bio}
-                                    </div>
-                                    <div class="col" id="event-display">
-                                        Event Info:  ${event_display}
-                                    </div>
-                                </div>
-                                <div class="row">
+                                      ${artist_bio}
+                                 </div>
+                                   <div class="col" id="event-display">
+           
+                                    </div> 
+                                </div> 
+                                <div  class="row">
                                     <div class="col" id="location-display">
-                                        Location: ${location_display}
+                                        venue: ${location_display}
                                     </div>
                                     <div class="col" id="date">
-                                        Date: ${date}
+                                        EventDate: ${formattedDate}
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                    <div class="col" id="date_time">
-                                         Time: ${date_time}
-                                    </div>
+                            
                                 </div>
                         </div>
                     </div>`
