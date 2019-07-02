@@ -35,7 +35,10 @@ function initMap() {
 }
 
 document.getElementById('submit').addEventListener('click', function () {
+    $(".event-card").empty();
     geocodeAddress(geocoder, map);
+
+   
 });
 
 
@@ -100,10 +103,10 @@ function showPosition(position) {
 
 function showEvents(json) {
     for (var i = 0; i < json.page.size; i++) {
-        var imageUrl = json._embedded.events[i].images[1].url;
+        var imageUrl = json._embedded.events[i].images[0].url;
 
         var artist_bio = json._embedded.events[i].name;
-        var event_display = "";
+        
 
        
 
