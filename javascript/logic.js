@@ -38,7 +38,7 @@ document.getElementById('submit').addEventListener('click', function () {
     $(".event-card").empty();
     geocodeAddress(geocoder, map);
 
-   
+
 });
 
 
@@ -76,21 +76,30 @@ function showPosition(position) {
     startDate = startDate.substr(0, dotIndex) + 'Z';
 
     // startDate = '2019-07-01T14:00:00Z'
-
+    var url = 'https://app.ticketmaster.com/discovery/v2/events.json';
+    var start = `start=1&startDateTime=${startDate}`;
+    var end = `endDateTime=${endDate}`;
+    var classification = `classificationName=music`;
+    var size = `size=25`;
+    var key = `ihFJccSowVqXXUsbu3CQf4vL56tgEJMA`;
+    var sort = `sort=date,desc`;
 
 
     $.ajax({
         type: "GET",
-        url: `https://app.ticketmaster.com/discovery/v2/events.json?start=1&startDateTime=${startDate}&endDateTime=${endDate}&classificationName=music&size=10&apikey=ihFJccSowVqXXUsbu3CQf4vL56tgEJMA&latlong=` + latlon,
-        // url: "https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&apikey=ihFJccSowVqXXUsbu3CQf4vL56tgEJMA&latlong=" + latlon,
+        url: `${url}?${start}&${end}&${classification}&${size}&apikey=${key}&latlong=${latlon}`,
         async: true,
         dataType: "json",
         success: function (json) {
-            console.log("response: ", json);
-            // var e = document.getElementById("events");
-            // e.innerHTML = json.page.totalElements + " events found.";
+            json._embedded.events.sort((a, b) => {
+                let adate = new Date(`${a.dates.start.localDate} ${a.dates.start.localTime}`);
+                let bdate = new Date(`${b.dates.start.localDate} ${b.dates.start.localTime}`);
+
+                return adate - bdate;
+            });
+
             showEvents(json);
-            // initMap(position, json);
+
         },
         error: function (xhr, status, err) {
             console.log(err);
@@ -106,12 +115,12 @@ function showEvents(json) {
         var imageUrl = json._embedded.events[i].images[0].url;
 
         var artist_bio = json._embedded.events[i].name;
-        
 
-       
 
-        
-        
+
+
+
+
         var tickets = json._embedded.events[i].url;
 
 
