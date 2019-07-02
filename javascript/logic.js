@@ -90,30 +90,45 @@ function showPosition(position) {
 
 function showEvents(json) {
     for (var i = 0; i < json.page.size; i++) {
+
         var imageUrl = json._embedded.events[i].images[2].url;
+        var location_display = json._embedded.events[i]._embedded.venues[0].name;
+     var ticket = json._embedded.events[i].url;
+
 
             var artist_bio = json._embedded.events[i].name;
         var event_display = "";
-        var location_display = json._embedded.events[i]._embedded.venues[0].name;
-     var ticket = json._embedded.events[i].url;
+
+       
+
+        
+        
+        var tickets = json._embedded.events[i].url;
         var date = json._embedded.events[i].dates.start.localDate;
       var date_time
     var format = "MM/DD/YYYY"
     var formattedDate = moment(date).format("MM/DD/YY");
     // console.log(">>>>DATE " + formattedDate)
             
+
+
         template = `<div class="card horizontal">
-                        <div class="card-image">
-                            <img src="#" alt="">
+                    <div class="card-image">
+                        <img src="${imageUrl}" class="responsive-img" alt="">
+
                         </div>
                         <div class="card-stacked">
                             <div class="card-content">
                                 <div class="row">
                                     <div class="col" id="artist-display">
+
                                         ${artist_bio}
                                     </div>
                                 </div>
-                                <div class="row">
+          
+                                <div  class="row">
+
+
                                     <div class="col" id="location-display">
                                         venue: ${location_display}
                                     </div>
@@ -122,15 +137,19 @@ function showEvents(json) {
                                     </div>
                                 </div>
                             </div>
+
+
                             <div class="card-action">
-                                <a href="#">This is a link</a>
+                                <a href=${tickets}>Tickets</a>
                             </div>
+
+
                         </div>
                     </div>`
-                   var element  = $(template) ;
+        var element = $(template);
 
 
-                   $(".event-card").append(element);
+        $(".event-card").append(element);
 
         // var image = $('<img>').attr("src", imageUrl)
         // $("#events").append(image, "<p>" + json._embedded.events[i].name + "</p>");
@@ -156,7 +175,7 @@ function addMarker(map, event) {
 }
 
 
-function checkEvent(json){
+function checkEvent(json) {
 
 }
 
