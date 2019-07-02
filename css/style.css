@@ -24,11 +24,7 @@ body {
   font-weight: 600;
 }
  #submit{
-  text-shadow: 0 0 10px rgba(0, 38, 255), 
-  0 0 20px rgb(0, 38, 255), 
-  0 0 40px rgb(0, 38, 255), 
-  0 0 80px rgb(0, 38, 255), 
-  s0 0 160px rgba(255, 255, 255, 1);
+background-color: #ffab40;
 }
 
 a{
@@ -38,7 +34,10 @@ a{
 
 .card.horizontal{
   height:125px;
+  
 }
+
+
 
 h1{
   filter: blur(.12px);
