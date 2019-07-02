@@ -28,14 +28,17 @@ var map;
 
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 8,
+        zoom: 10,
         center: { lat: -34.397, lng: 150.644 }
     });
     geocoder = new google.maps.Geocoder();
 }
 
 document.getElementById('submit').addEventListener('click', function () {
+    $(".event-card").empty();
     geocodeAddress(geocoder, map);
+
+   
 });
 
 
@@ -64,11 +67,21 @@ function showPosition(position) {
     // x.innerHTML = "Latitude: " + position.lat() +
     //     "<br>Longitude: " + position.lng();
     var latlon = position.lat() + "," + position.lng();
+    var startDate = new Date().toISOString();
+    var dotIndex = startDate.lastIndexOf('.');
+    var endDate = new Date();
+
+    endDate.setMonth((endDate.getMonth() + 1) % 12);
+    endDate = endDate.toISOString().substr(0, dotIndex) + 'Z';
+    startDate = startDate.substr(0, dotIndex) + 'Z';
+
+    // startDate = '2019-07-01T14:00:00Z'
+
 
 
     $.ajax({
         type: "GET",
-        url: "https://app.ticketmaster.com/discovery/v2/events.json?page=3&startDateTime=2019-07-01T14:00:00Z&endDateTime=2019-08-01T14:00:00Z&classificationName=music&size=10&apikey=ihFJccSowVqXXUsbu3CQf4vL56tgEJMA&latlong=34.0522342,-118.2436849",
+        url: `https://app.ticketmaster.com/discovery/v2/events.json?start=1&startDateTime=${startDate}&endDateTime=${endDate}&classificationName=music&size=10&apikey=ihFJccSowVqXXUsbu3CQf4vL56tgEJMA&latlong=` + latlon,
         // url: "https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&apikey=ihFJccSowVqXXUsbu3CQf4vL56tgEJMA&latlong=" + latlon,
         async: true,
         dataType: "json",
@@ -90,27 +103,38 @@ function showPosition(position) {
 
 function showEvents(json) {
     for (var i = 0; i < json.page.size; i++) {
-        var imageUrl = json._embedded.events[i].images[2].url;
+        var imageUrl = json._embedded.events[i].images[0].url;
 
-            var artist_bio = json._embedded.events[i].name;
-        var event_display = "";
+        var artist_bio = json._embedded.events[i].name;
+        
+
+       
+
+        
+        
+        var tickets = json._embedded.events[i].url;
+
+
         var location_display = json._embedded.events[i]._embedded.venues[0].name;
-     
+
         var date = json._embedded.events[i].dates.start.localDate;
-      var date_time
-    var format = "MM/DD/YYYY"
-    var formattedDate = moment(date).format("MM/DD/YY");
-    // console.log(">>>>DATE " + formattedDate)
-            
+
+        var date_time
+        var format = "MM/DD/YYYY"
+        var formattedDate = moment(date).format("MM/DD/YY");
+        // console.log(">>>>DATE " + formattedDate)
+
+
         template = `<div class="card horizontal">
                     <div class="card-image">
-                        <img src="${imageUrl}" class="responsive-img" alt="">
+                        <img src="${imageUrl}" style="width:200px; height:125px" class="responsive-img" alt="">
                         </div>
 
                         <div class="card-stacked">
-                            <div class="card-content">
-                                <div class="row">
+                            <div class="card-content" style="padding:0px">
+                                <div class="row" style="margin-bottom:0px">
                                     <div class="col" id="artist-display">
+
                                       ${artist_bio}
                                  </div>
                                    <div class="col" id="event-display">
@@ -118,22 +142,26 @@ function showEvents(json) {
                                     </div> 
                                 </div> 
                                 <div  class="row">
+
                                     <div class="col" id="location-display">
-                                        venue: ${location_display}
+                                        Venue: ${location_display}
                                     </div>
                                     <div class="col" id="date">
-                                        EventDate: ${formattedDate}
+                                        Event Date: ${formattedDate}
                                     </div>
                                 </div>
                             </div>
-                            
-                                </div>
+
+                            <div class="card-action" style="padding-top:0px">
+                                <a href=${tickets}>Tickets</a>
+                            </div>
+
                         </div>
                     </div>`
-                   var element  = $(template) ;
+        var element = $(template);
 
 
-                   $(".event-card").append(element);
+        $(".event-card").append(element);
 
         // var image = $('<img>').attr("src", imageUrl)
         // $("#events").append(image, "<p>" + json._embedded.events[i].name + "</p>");
@@ -145,6 +173,7 @@ function showEvents(json) {
 
 
         addMarker(map, json._embedded.events[i]);
+
     }
 }
 
@@ -159,7 +188,7 @@ function addMarker(map, event) {
 }
 
 
-function checkEvent(json){
+function checkEvent(json) {
 
 }
 
