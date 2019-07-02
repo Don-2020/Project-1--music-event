@@ -11,6 +11,8 @@
 body {
   background-image: url("../images/concert-crowd4.jpeg");
   background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
 }
 
   .card-image{
