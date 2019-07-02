@@ -6,6 +6,10 @@
 .nav-extended {
   background-color: black;
   text-align: center;
+  margin-top: -41px
+}
+.nav-wrapper{
+  padding-bottom: 13px;
 }
 
 body {
