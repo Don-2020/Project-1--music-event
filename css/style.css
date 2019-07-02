@@ -19,14 +19,31 @@ body {
 
   }
 
+h1{
+  filter: blur(.12px);
+  text-shadow: 0 0 10px rgba(0, 38, 255),
+  0 0 20px rgb(0, 38, 255),
+  0 0 40px rgb(0, 38, 255),
+  0 0 80px  rgb(0, 38, 255),
+  0 0 160px rgba(255, 255, 255, 1);
+  
+}
 
+h5{
+  filter: blur(.10px);
+  text-shadow: 0 0 10px rgba(0, 38, 255),
+  0 0 20px rgb(0, 38, 255),
+  0 0 40px rgb(0, 38, 255),
+  0 0 80px  rgb(0, 38, 255),
+  0 0 160px rgba(255, 255, 255, 1);
+}
   
   
 
 #artist-display{
   font-size: 21px;
   font-weight: bold;
-  color: black
+  color: black;
 }
 
 
