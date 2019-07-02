@@ -124,12 +124,12 @@ function showEvents(json) {
 
         template = `<div class="card horizontal">
                     <div class="card-image">
-                        <img src="${imageUrl}" class="responsive-img" alt="">
+                        <img src="${imageUrl}" style="width:200px; height:125px" class="responsive-img" alt="">
                         </div>
 
                         <div class="card-stacked">
-                            <div class="card-content">
-                                <div class="row">
+                            <div class="card-content" style="padding:0px">
+                                <div class="row" style="margin-bottom:0px">
                                     <div class="col" id="artist-display">
 
                                       ${artist_bio}
@@ -149,7 +149,7 @@ function showEvents(json) {
                                 </div>
                             </div>
 
-                            <div class="card-action">
+                            <div class="card-action" style="padding-top:0px">
                                 <a href=${tickets}>Tickets</a>
                             </div>
 

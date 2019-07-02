@@ -17,11 +17,10 @@ body {
   background-size: cover;
 }
 
-  .card-image{
-    width: 300px;
-    height:225;
-
-  }
+ 
+.card.horizontal{
+  height:125px;
+}
 
 h1{
   filter: blur(.12px);
@@ -46,7 +45,7 @@ h5{
   
 
 #artist-display{
-  font-size: 21px;
+  font-size: 18px;
   font-weight: bold;
   color: black;
 }
