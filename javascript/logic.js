@@ -64,11 +64,21 @@ function showPosition(position) {
     // x.innerHTML = "Latitude: " + position.lat() +
     //     "<br>Longitude: " + position.lng();
     var latlon = position.lat() + "," + position.lng();
+    var startDate = new Date().toISOString();
+    var dotIndex = startDate.lastIndexOf('.');
+    var endDate = new Date();
+
+    endDate.setMonth((endDate.getMonth() + 1) % 12);
+    endDate = endDate.toISOString().substr(0, dotIndex) + 'Z';
+    startDate = startDate.substr(0, dotIndex) + 'Z';
+
+    // startDate = '2019-07-01T14:00:00Z'
+
 
 
     $.ajax({
         type: "GET",
-        url: "https://app.ticketmaster.com/discovery/v2/events.json?page=3&startDateTime=2019-07-01T14:00:00Z&endDateTime=2019-08-01T14:00:00Z&classificationName=music&size=10&apikey=ihFJccSowVqXXUsbu3CQf4vL56tgEJMA&latlong=" + latlon,
+        url: `https://app.ticketmaster.com/discovery/v2/events.json?start=1&startDateTime=${startDate}&endDateTime=${endDate}&classificationName=music&size=10&apikey=ihFJccSowVqXXUsbu3CQf4vL56tgEJMA&latlong=` + latlon,
         // url: "https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&apikey=ihFJccSowVqXXUsbu3CQf4vL56tgEJMA&latlong=" + latlon,
         async: true,
         dataType: "json",
