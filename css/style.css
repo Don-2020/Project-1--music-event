@@ -33,7 +33,10 @@ body {
 
 .card.horizontal{
   height:125px;
+  
 }
+
+
 
 h1{
   filter: blur(.12px);
