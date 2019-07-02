@@ -152,8 +152,8 @@ function showEvents(json) {
                                 </div>
                             </div>
 
-                            <div class="card-action" style="padding-top:0px">
-                                <a href=${tickets}>Tickets</a>
+                            <div class="card-action " style="padding-top:0px">
+                                <a  href=${tickets}>Tickets</a>
                             </div>
 
                         </div>

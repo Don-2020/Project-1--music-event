@@ -15,6 +15,8 @@
 body {
   background-image: url("../images/concert-crowd4.jpeg");
   background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
 }
 #address {
   color: white;
@@ -22,11 +24,7 @@ body {
   font-weight: 600;
 }
  #submit{
-  text-shadow: 0 0 10px rgba(0, 38, 255), 
-  0 0 20px rgb(0, 38, 255), 
-  0 0 40px rgb(0, 38, 255), 
-  0 0 80px rgb(0, 38, 255), 
-  s0 0 160px rgba(255, 255, 255, 1);
+background-color: #ffab40;
 }
 
 
